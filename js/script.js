@@ -13,6 +13,8 @@ let parolaArray = [];
 
 // creo l'evento al click del bottone 
 btn.addEventListener('click', function() {
+    resetAlert();
+    resetArray();
 
     // raccolgo la parola scritta dall'utente 
     let parola = inputBox.value ;
@@ -27,10 +29,35 @@ btn.addEventListener('click', function() {
     console.log (parolaArray);
     console.log(parolaArray.reverse())
 
-
+    // inserisco le condizioni da verificare e il messaggio da stampare 
+    for (let i = 0; i < parolaArray.length; i++){
+        if (parolaArray[i] === parolaArray.reverse()[i]){
+            printMsg('La parola è palindroma!');
+        } else {
+            printMsg('La parola non è palindroma.');
+        }
+    }
 }
 )
 
+// mi creo una funzione per stampare nell'html 
+function printMsg (message) {
+    const alert = document.querySelector ('.alert');
+    alert.classList.remove ('d-none');
+    alert.innerText = message;
+}
+
+// mi creo una funzione per resettare l'alert
+function resetAlert (){
+    const alert = document.querySelector ('.alert');
+    alert.classList.add('d-none');
+
+}
+
+// mi creo una funzione per resettare la casella di input
+function resetArray(){
+    parolaArray = [];
+}
 
 
 // Pari e Dispari
