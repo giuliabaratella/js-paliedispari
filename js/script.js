@@ -12,7 +12,10 @@ inputBoxLabel.innerHTML= 'Inserisci una parola e verifica se è palindroma'
 let parolaArray = [];
 
 // creo l'evento al click del bottone 
-btn.addEventListener('click', function() {
+btn.addEventListener('click', palindromeValidator);
+
+// rendo più leggibile il codice separando l'evento del bottone dalla funzione creata 
+function palindromeValidator(){
     resetAlert();
     resetArray();
 
@@ -31,14 +34,16 @@ btn.addEventListener('click', function() {
 
     // inserisco le condizioni da verificare e il messaggio da stampare 
     for (let i = 0; i < parolaArray.length; i++){
-        if (parolaArray[i] === parolaArray.reverse()[i]){
-            printMsg('La parola è palindroma!');
-        } else {
-            printMsg('La parola non è palindroma.');
-        }
+        // if (parolaArray[i] === parolaArray.reverse()[i]){
+        //     printMsg('La parola è palindroma!');
+        // } else {
+        //     printMsg('La parola non è palindroma.');
+        // }
+
+        // prova operatore ternario 
+        (parolaArray[i] === parolaArray.reverse()[i]) ? printMsg('La parola è palindroma!') : printMsg('La parola non è palindroma.');
     }
 }
-)
 
 // mi creo una funzione per stampare nell'html 
 function printMsg (message) {
@@ -66,6 +71,8 @@ function resetArray(){
 // Sommiamo i due numeri,
 // Stabiliamo se la somma dei due numeri è pari o dispari,
 // Dichiariamo chi ha vinto.
+
+
 
 // utility
 function getRndInteger(min, max) {
