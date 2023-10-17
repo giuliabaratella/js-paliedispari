@@ -1,0 +1,15 @@
+#palindroma {
+    background-color: cornflowerblue;
+    height: 400px;
+
+}
+
+
+#winnerbox {
+    width: fit-content;
+    margin: 0 auto;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: cornflowerblue;
+}
