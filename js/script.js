@@ -92,25 +92,40 @@ btn2.addEventListener('click', function() {
     nComputer = getRndInteger(1,5);
     console.log (nComputer);
 
-    // controllo se i dati inseriti dall'utente sono validi 
-    let oddOrEven = inputBox2.value;
     let nPlayer = parseInt(inputBox3.value);
-    let check = false;
-    if (!isNaN(nPlayer) && nPlayer <= 5 && nPlayer >=1 && oddOrEven !== ''){
-        check = true;
-        printMsg2 ('il valore è giusto')
-    } else {
-        printMsg2 ('I valori che hai inserito non sono corretti');
-    }
+    console.log (nPlayer);
 
+    // controllo se i dati inseriti dall'utente sono validi 
+    let check = numberValidator();
+    if (check) {
+        let result = nPlayer + nComputer;
+        let resultCheck = isEven(result);
+        if (resultCheck){
+            console.log (result +' pari')
+        } else {
+            console.log (result + ' dispari')
+        }
+    }
 })
 
-
+function numberValidator(){
+    let oddOrEven = inputBox2.value;
+    let nPlayer = parseInt(inputBox3.value);
+    if (!isNaN(nPlayer) && nPlayer <= 5 && nPlayer >=1 && oddOrEven !== ''){
+        return true; 
+    } else {
+        return false;
+    }
+}
 
 function printMsg2 (message) {
     const alert2 = document.querySelector('.alert2');
     alert2.classList.remove ('d-none');
     alert2.innerText = message;
+}
+
+function isEven (n){
+    return (n % 2 === 0) ? true : false;
 }
 
 
