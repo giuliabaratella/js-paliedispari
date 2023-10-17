@@ -65,12 +65,53 @@ function resetArray(){
 }
 
 
+
+
+
+
 // Pari e Dispari
 // L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.
 // Generiamo un numero random (sempre da 1 a 5) per il computer.
 // Sommiamo i due numeri,
 // Stabiliamo se la somma dei due numeri è pari o dispari,
 // Dichiariamo chi ha vinto.
+
+const btn2 = document.getElementById('button2');
+const inputBox2 = document.getElementById ('data2');
+const inputBoxLabel2 = document.getElementById('data-label-2');
+const inputBox3 = document.getElementById ('data3');
+const inputBoxLabel3 = document.getElementById('data-label-3');
+inputBoxLabel2.innerHTML= 'Scegli se pari o dispari'
+inputBoxLabel3.innerHTML= 'Scegli un numero da 1 a 5'
+
+let nComputer;
+
+btn2.addEventListener('click', function() {
+
+    // genero numero randomico per il computer 
+    nComputer = getRndInteger(1,5);
+    console.log (nComputer);
+
+    // controllo se i dati inseriti dall'utente sono validi 
+    let oddOrEven = inputBox2.value;
+    let nPlayer = parseInt(inputBox3.value);
+    let check = false;
+    if (!isNaN(nPlayer) && nPlayer <= 5 && nPlayer >=1 && oddOrEven !== ''){
+        check = true;
+        printMsg2 ('il valore è giusto')
+    } else {
+        printMsg2 ('I valori che hai inserito non sono corretti');
+    }
+
+})
+
+
+
+function printMsg2 (message) {
+    const alert2 = document.querySelector('.alert2');
+    alert2.classList.remove ('d-none');
+    alert2.innerText = message;
+}
 
 
 
