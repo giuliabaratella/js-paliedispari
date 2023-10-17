@@ -33,15 +33,16 @@ function palindromeValidator(){
     console.log(parolaArray.reverse())
 
     // inserisco le condizioni da verificare e il messaggio da stampare 
+    let checkArray = false;
     for (let i = 0; i < parolaArray.length; i++){
-        // if (parolaArray[i] === parolaArray.reverse()[i]){
-        //     printMsg('La parola è palindroma!');
-        // } else {
-        //     printMsg('La parola non è palindroma.');
-        // }
-
-        // prova operatore ternario 
-        (parolaArray[i] === parolaArray.reverse()[i]) ? printMsg('La parola è palindroma!') : printMsg('La parola non è palindroma.');
+        if (parolaArray[i] !== parolaArray.reverse()[i]){
+            checkArray = true;
+        }
+    }
+    if (checkArray){
+        printMsg('La parola non è palindroma.')
+    } else {
+        printMsg('La parola è palindroma!')
     }
 }
 
