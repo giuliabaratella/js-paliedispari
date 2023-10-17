@@ -81,16 +81,19 @@ const inputBox2 = document.getElementById ('data2');
 const inputBoxLabel2 = document.getElementById('data-label-2');
 const inputBox3 = document.getElementById ('data3');
 const inputBoxLabel3 = document.getElementById('data-label-3');
+const nComputerBox = document.getElementById('computer-number');
+const resultBox = document.getElementById('result');
 inputBoxLabel2.innerHTML= 'Scegli se pari o dispari'
 inputBoxLabel3.innerHTML= 'Scegli un numero da 1 a 5'
-
+const winnerBox = document.getElementById('winnerbox');
+const gameBox = document.getElementById('game-box');
 let nComputer;
 
 btn2.addEventListener('click', function() {
-
-    // genero numero randomico per il computer 
-    nComputer = getRndInteger(1,5);
-    console.log (nComputer);
+    gameBox.classList.remove ('d-none');
+    resetWinnerBox ();
+    resetAlert2();
+    let oddOrEven = inputBox2.value;
 
     let nPlayer = parseInt(inputBox3.value);
     console.log (nPlayer);
@@ -98,13 +101,31 @@ btn2.addEventListener('click', function() {
     // controllo se i dati inseriti dall'utente sono validi 
     let check = numberValidator();
     if (check) {
+
+        // genero numero randomico per il computer 
+        nComputer = getRndInteger(1,5);
+        console.log (nComputer);
+        nComputerBox.innerText = nComputer;
         let result = nPlayer + nComputer;
+        // controllo se la somma è pari o dispari 
         let resultCheck = isEven(result);
         if (resultCheck){
-            console.log (result +' pari')
+            resultBox.innerHTML = (result +', pari')
         } else {
-            console.log (result + ' dispari')
+            resultBox.innerHTML = (result + ', dispari')
         }
+
+        // dichiaro chi ha vinto 
+        if ((resultCheck && oddOrEven === 'Even') || (!resultCheck && oddOrEven === 'Odd')){
+            winnerBox.classList.remove ('d-none');
+            winnerBox.innerText = 'Hai vinto!';
+        } else if ((resultCheck && oddOrEven === 'Odd') || (!resultCheck && oddOrEven === 'Even')){
+            winnerBox.classList.remove ('d-none');
+            winnerBox.innerText = 'Hai perso :(';
+        }
+    } else {
+        printMsg2 ('i valori inseriti non sono validi');
+        gameBox.classList.add ('d-none');
     }
 })
 
@@ -128,6 +149,16 @@ function isEven (n){
     return (n % 2 === 0) ? true : false;
 }
 
+function resetAlert2 (){
+    const alert2 = document.querySelector ('.alert2');
+    alert2.classList.add('d-none');
+
+}
+function resetWinnerBox (){
+    const winnerBox = document.getElementById('winnerbox');
+    winnerBox.classList.add('d-none');
+
+}
 
 
 // utility
