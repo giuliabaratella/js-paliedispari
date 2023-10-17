@@ -21,29 +21,35 @@ function palindromeValidator(){
 
     // raccolgo la parola scritta dall'utente 
     let parola = inputBox.value ;
+    parola = parola.toLowerCase();
     console.log (parola);
-
-    // ciclo per ogni lettera della parola scritta che inserisce una lettera nell'array
-    for (let i = 0; i < parola.length; i++){
-        parolaArray.push (parola[i]);
-    }
-
-    // controllo l'array e il suo reverse 
-    console.log (parolaArray);
-    console.log(parolaArray.reverse())
-
-    // inserisco le condizioni da verificare e il messaggio da stampare 
-    let checkArray = false;
-    for (let i = 0; i < parolaArray.length; i++){
-        if (parolaArray[i] !== parolaArray.reverse()[i]){
-            checkArray = true;
+    if (parola !== ''){
+       
+        // ciclo per ogni lettera della parola scritta che inserisce una lettera nell'array
+        for (let i = 0; i < parola.length; i++){
+            parolaArray.push (parola[i]);
         }
-    }
-    if (checkArray){
-        printMsg('La parola non è palindroma.')
+
+        // controllo l'array e il suo reverse 
+        console.log (parolaArray);
+        console.log(parolaArray.reverse())
+
+        // inserisco le condizioni da verificare e il messaggio da stampare 
+        let checkArray = false;
+        for (let i = 0; i < parolaArray.length; i++){
+            if (parolaArray[i] !== parolaArray.reverse()[i]){
+                checkArray = true;
+            }
+        }
+     if (checkArray){
+         printMsg('La parola non è palindroma.')
+        } else {
+            printMsg('La parola è palindroma!')
+        }
     } else {
-        printMsg('La parola è palindroma!')
+        printMsg ('Inserisci una parola');
     }
+
 }
 
 // mi creo una funzione per stampare nell'html 
